@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  lineardesign-api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./codon_usage_freq_table_human.csv:/app/codon_usage_freq_table_human.csv
+      - ./codon_usage_freq_table_yeast.csv:/app/codon_usage_freq_table_yeast.csv
+      - ./coding_wheel.txt:/app/coding_wheel.txt
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
